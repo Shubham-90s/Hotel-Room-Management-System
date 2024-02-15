@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Room</title>
+</head>
+<body>
+    <h2>Edit Room</h2>
+    <form action="{{ url_for('update_room', id=room[0]) }}" method="post">
+        <label for="room_number">Room Number:</label>
+        <input type="text" name="room_number" value="{{ room[1] }}" required>
+        <label for="capacity">Capacity:</label>
+        <input type="text" name="capacity" value="{{ room[2] }}" required>
+        <label for="status">Status:</label>
+        <input type="text" name="status" value="{{ room[3] }}" required>
+        <button type="submit">Update Room</button>
+    </form>
+</body>
+</html>

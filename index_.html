@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #808080;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Room List</h1>
+        <ul>
+            {% for room in rooms %}
+                <li>
+                    Room {{ room[1] }}
+                    <span>Capacity: {{ room[2] }}</span>
+                    <span>Status: {{ room[3] }}</span>
+                    <div>
+                        <a href="{{ url_for('edit_room', id=room[0]) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ url_for('delete_room', id=room[0]) }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <h2>Add Room</h2>
+        <form action="{{ url_for('add_room') }}" method="post">
+            <label for="room_number">Room Number:</label>
+            <input type="text" name="room_number" required>
+
+            <label for="capacity">Capacity:</label>
+            <input type="text" name="capacity" required>
+
+    </div>
+</body>
+</html>
+
+            <label for="status">Status:</label>
+            <input type="text" name="status" required>
+
+            <button type="submit">Add Room</button>
+        </form>
